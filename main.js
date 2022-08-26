@@ -7,19 +7,18 @@ const FULL_HEART = '♥'
 const errMsg = document.getElementById('modal') 
 errMsg.classList.add('hidden') 
 
-
-const heartClicked = (e) => { 
+const liker = (e) => { 
   
   mimicServerCall()  
   .then(()=>{  
     if(e.target.textContent == EMPTY_HEART){  
       e.target.textContent = FULL_HEART       
       e.target.classList.add('activated-heart') 
-    }else{
+    }
+    else{
       e.target.textContent = EMPTY_HEART      
       e.target.classList.remove('activated-heart') 
     }
-    
   })
   .catch(()=>{  
     errMsg.classList.remove('hidden')  
@@ -27,15 +26,11 @@ const heartClicked = (e) => {
       errMsg.classList.add('hidden')
     }, 3000)
   })
-  
 }
-
 let hearts = document.getElementsByClassName('like-glyph') 
 for (let heart of hearts) { 
-  heart.addEventListener('click', heartClicked) 
+  heart.addEventListener('click', liker) 
 }
-
-
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
 //------------------------------------------------------------------------------
